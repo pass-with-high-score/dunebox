@@ -122,13 +122,10 @@ internal object HookInstrumentation {
             return base.newActivity(cl, className, intent)
         }
 
-        /**
-         * callActivityOnCreate — NO LONGER injects VirtualContext.
-         * LoadedApkHook now handles ClassLoader/Resources via the registered LoadedApk.
-         * The framework creates the proper Context automatically.
-         */
         override fun callActivityOnCreate(activity: Activity, icicle: Bundle?) {
             Timber.d("callActivityOnCreate: ${activity.javaClass.name}")
+            neutralizeMtkResOpt(activity)
+            applyGuestTheme(activity)
             base.callActivityOnCreate(activity, icicle)
         }
 
@@ -138,8 +135,112 @@ internal object HookInstrumentation {
             persistentState: android.os.PersistableBundle?
         ) {
             Timber.d("callActivityOnCreate (persistent): ${activity.javaClass.name}")
+            neutralizeMtkResOpt(activity)
+            applyGuestTheme(activity)
             base.callActivityOnCreate(activity, icicle, persistentState)
         }
+
+        /**
+         * Apply the guest activity's declared theme before AppCompat reads it in
+         * super.onCreate. Without this, AppCompatActivity.setContentView throws
+         * "You need to use a Theme.AppCompat theme", because the Activity inherits
+         * the HOST stub's theme (plain android:theme, not AppCompat).
+         *
+         * Priority: activity.mActivityInfo.theme → guest manifest ActivityInfo.theme
+         * → guest ApplicationInfo.theme.
+         */
+        private fun applyGuestTheme(activity: Activity) {
+            val lt = "DuneboxTheme"
+            val className = activity.javaClass.name
+            try {
+                val registry = app.pwhs.dunebox.sdk.internal.engine.VirtualAppRegistry
+                var appEntry = registry.findAppByComponent(className)
+                if (appEntry == null) {
+                    appEntry = registry.getActiveApp()
+                    android.util.Log.w(
+                        lt,
+                        "findAppByComponent($className) miss — fallback to activePkg=${appEntry?.packageName}"
+                    )
+                }
+                if (appEntry == null) {
+                    android.util.Log.w(lt, "No app entry for $className — cannot apply guest theme")
+                    return
+                }
+
+                // Parse guest APK for the REAL theme. The framework-populated
+                // `mActivityInfo.theme` is often a system-namespace default (0x0103…)
+                // because AMS doesn't know about our virtual package's manifest —
+                // that won't satisfy AppCompat. Guest theme lives in 0x7f… range.
+                val pi = activity.packageManager.getPackageArchiveInfo(
+                    appEntry.apkPath,
+                    android.content.pm.PackageManager.GET_ACTIVITIES
+                )
+                val guestInfo = pi?.activities?.firstOrNull { it.name == className }
+                var themeId = guestInfo?.theme ?: 0
+                android.util.Log.i(
+                    lt,
+                    "parsed ${appEntry.apkPath}: activities=${pi?.activities?.size} " +
+                            "match=${guestInfo != null} activityTheme=0x${Integer.toHexString(themeId)}"
+                )
+                if (themeId == 0) {
+                    themeId = pi?.applicationInfo?.theme ?: 0
+                    android.util.Log.i(
+                        lt, "fallback to applicationInfo.theme=0x${Integer.toHexString(themeId)}"
+                    )
+                }
+                if (themeId == 0) {
+                    // Last resort: whatever framework set
+                    val mActivityInfoField = android.app.Activity::class.java
+                        .getDeclaredField("mActivityInfo").apply { isAccessible = true }
+                    val info = mActivityInfoField.get(activity) as? android.content.pm.ActivityInfo
+                    themeId = info?.theme ?: 0
+                    android.util.Log.i(
+                        lt, "fallback to mActivityInfo.theme=0x${Integer.toHexString(themeId)}"
+                    )
+                }
+
+                if (themeId != 0) {
+                    activity.setTheme(themeId)
+                    android.util.Log.i(
+                        lt, "Applied theme 0x${Integer.toHexString(themeId)} for $className"
+                    )
+                } else {
+                    android.util.Log.w(lt, "No theme resolved for $className")
+                }
+            } catch (e: Throwable) {
+                android.util.Log.w(lt, "applyGuestTheme failed for $className", e)
+            }
+        }
+
+        /**
+         * MIUI + MediaTek vendor-patches ResourcesImpl with a ResOptExt cache
+         * (`com.mediatek.res.ResOptExtImpl` → `AsyncDrawableCache`). For Resources
+         * instances whose ResourcesKey wasn't indexed via the normal
+         * createPackageContext path, the cache dereferences a null field in
+         * `putCacheList` and throws NPE after `loadDrawable` succeeds.
+         *
+         * Workaround: replace `ResourcesImpl.mResOptExt` with a no-op Proxy of
+         * the same interface so cache writes/reads become silent no-ops.
+         */
+        /**
+         * MIUI + MediaTek ship `com.mediatek.res.ResOptExtImpl` +
+         * `com.mediatek.res.AsyncDrawableCache` as singletons accessed statically
+         * from the vendor-patched `ResourcesImpl.cacheDrawable`. The cache
+         * dereferences a null field inside `putCacheList:189` for Resources whose
+         * metadata wasn't populated the way MIUI expects.
+         *
+         * Workaround: reflect the singletons, null-out every Map/List/Set/array
+         * field so putCacheList early-returns or no-ops before hitting the
+         * problematic `equals()` call. We only need to do this once per process.
+         */
+        private var mtkNeutralized = false
+
+        private fun neutralizeMtkResOpt(activity: Activity) {
+            if (mtkNeutralized) return
+            mtkNeutralized = true
+            MtkResOptShim.apply("DuneboxMtk")
+        }
+
 
         // Delegate all lifecycle methods to original
         override fun onCreate(arguments: Bundle?) = base.onCreate(arguments)

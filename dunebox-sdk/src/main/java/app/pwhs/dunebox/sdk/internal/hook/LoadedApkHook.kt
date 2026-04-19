@@ -104,35 +104,13 @@ internal object LoadedApkHook {
                 mSplitResDirsField.set(virtualLoadedApk, null)
             }
 
-            // 8. Create and set proper Resources using our AssetManager
-            try {
-                val assetManager = android.content.res.AssetManager::class.java
-                    .getDeclaredConstructor().newInstance()
-                val addAssetPath = android.content.res.AssetManager::class.java
-                    .getDeclaredMethod("addAssetPath", String::class.java)
-                addAssetPath.isAccessible = true
-                addAssetPath.invoke(assetManager, appEntry.apkPath)
-
-                // Get display metrics and config from host
-                val currentAppMethod = atClass.getDeclaredMethod("currentApplication")
-                currentAppMethod.isAccessible = true
-                val app = currentAppMethod.invoke(null) as? android.app.Application
-                val hostResources = app?.resources
-                    ?: throw RuntimeException("Cannot get host resources")
-
-                @Suppress("DEPRECATION")
-                val resources = android.content.res.Resources(
-                    assetManager,
-                    hostResources.displayMetrics,
-                    hostResources.configuration
-                )
-
-                val mResourcesField = ReflectUtils.getField(loadedApkClass, "mResources")
-                mResourcesField?.set(virtualLoadedApk, resources)
-                Timber.d("Pre-initialized Resources for virtual LoadedApk")
-            } catch (e: Exception) {
-                Timber.w(e, "Failed to pre-init Resources (framework will create its own)")
-            }
+            // 8. Do NOT pre-init Resources. Creating Resources via the deprecated
+            // constructor bypasses ResourcesManager, so ResourcesKey / mResDir-backed
+            // fields on ResourcesImpl are not registered. On MIUI + MediaTek this
+            // triggers a NPE in AsyncDrawableCache.putCacheList (line 189) during
+            // AppCompat's first drawable load. Leaving mResources null forces
+            // LoadedApk.getResources() to route through ResourcesManager on first
+            // access, producing a properly-keyed Resources instance.
 
             // 9. Register in mPackages
             val putMethod = mPackages.javaClass.getMethod("put", Any::class.java, Any::class.java)

@@ -47,6 +47,11 @@ internal object BinderHookManager {
             // Non-fatal: some hooks might still work
         }
 
+        // Step 1b: Neutralize MIUI+MediaTek AsyncDrawableCache — its vendor-patched
+        // `ResourcesImpl.cacheDrawable` NPE's for non-host Resources (guest apps
+        // launched in-container). See MtkResOptShim.kt for the full story.
+        MtkResOptShim.apply()
+
         if (!enableBinderHook) {
             Timber.i("Binder hooks disabled by config")
             isInitialized = true

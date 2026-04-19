@@ -107,6 +107,11 @@ internal object HookInstrumentation {
                 val appEntry = VirtualAppRegistry.getApp(virtualPkg)
                 if (appEntry?.classLoader != null) {
                     try {
+                        // Ensure guest Application is instantiated + onCreate'd
+                        // BEFORE the Activity constructor runs, so Hilt/Dagger
+                        // component graph is ready when the Activity accesses it.
+                        hostContext?.let { GuestApplicationLoader.loadIfNeeded(it, appEntry) }
+
                         val realClass = appEntry.classLoader!!.loadClass(realTarget)
                         val activity = realClass.getDeclaredConstructor().newInstance() as Activity
                         Timber.i("✅ newActivity created: $realTarget via virtual ClassLoader")
@@ -126,6 +131,7 @@ internal object HookInstrumentation {
             Timber.d("callActivityOnCreate: ${activity.javaClass.name}")
             neutralizeMtkResOpt(activity)
             applyGuestTheme(activity)
+            rebindGuestApplication(activity)
             base.callActivityOnCreate(activity, icicle)
         }
 
@@ -137,7 +143,25 @@ internal object HookInstrumentation {
             Timber.d("callActivityOnCreate (persistent): ${activity.javaClass.name}")
             neutralizeMtkResOpt(activity)
             applyGuestTheme(activity)
+            rebindGuestApplication(activity)
             base.callActivityOnCreate(activity, icicle, persistentState)
+        }
+
+        /**
+         * Point `activity.mApplication` at the guest Application (already
+         * instantiated via GuestApplicationLoader in `newActivity`). Hilt's
+         * generated onContextAvailable reads `activity.getApplication()` and
+         * casts to the `@HiltAndroidApp` class — if we don't rebind, it sees
+         * the host Application and throws.
+         */
+        private fun rebindGuestApplication(activity: Activity) {
+            val className = activity.javaClass.name
+            val registry = app.pwhs.dunebox.sdk.internal.engine.VirtualAppRegistry
+            val appEntry = registry.findAppByComponent(className) ?: registry.getActiveApp() ?: return
+            val guestApp = appEntry.application
+                ?: hostContext?.let { GuestApplicationLoader.loadIfNeeded(it, appEntry) }
+                ?: return
+            GuestApplicationLoader.rebindActivityApplication(activity, guestApp)
         }
 
         /**

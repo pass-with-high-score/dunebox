@@ -24,6 +24,8 @@ internal object VirtualAppRegistry {
         val parsedInfo: ParsedApkInfo,
         /** ClassLoader for this app, created lazily when the app is launched */
         var classLoader: ClassLoader? = null,
+        /** Guest Application instance after GuestApplicationLoader.loadIfNeeded */
+        var application: android.app.Application? = null,
     )
 
     // PackageName -> AppEntry

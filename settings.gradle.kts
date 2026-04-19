@@ -21,4 +21,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "DuneBox"
 include(":app")
- 
+include(":dunebox-sdk")
+include(":dunebox-native")
+include(":dunebox-stub")
+include(":sample-app")

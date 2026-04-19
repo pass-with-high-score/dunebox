@@ -1,0 +1,9 @@
+-- The CXX compiler identification is Clang 19.0.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /Users/nqmgaming/Library/Android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-native/.cxx/Debug/6azr261h/arm64-v8a

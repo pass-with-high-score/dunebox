@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="app.pwhs.dunebox.stub" >
+
+    <uses-sdk android:minSdkVersion="26" />
+
+    <!--
+        DuneBox Stub Components
+        ========================
+        These are placeholder components that DuneBox uses to "trick" the Android
+        framework into launching virtual app components. The framework requires all
+        components to be declared in the manifest — so we pre-declare a pool of stubs.
+
+        Process :p0 = first virtual app, :p1 = second, :p2 = third
+    -->
+    <application>
+
+        <!-- ==================== STUB ACTIVITIES: Process :p0 ==================== -->
+        <!-- Standard launch mode (10 stubs) -->
+        <activity
+            android:name="app.pwhs.dunebox.stub.StubActivity$P0$S0"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+            android:exported="false"
+            android:process=":p0"
+            android:taskAffinity="app.pwhs.dunebox.vt.p0" />
+        <activity
+            android:name="app.pwhs.dunebox.stub.StubActivity$P0$S1"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+            android:exported="false"
+            android:process=":p0"
+            android:taskAffinity="app.pwhs.dunebox.vt.p0" />
+        <activity
+            android:name="app.pwhs.dunebox.stub.StubActivity$P0$S2"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+            android:exported="false"
+            android:process=":p0"
+            android:taskAffinity="app.pwhs.dunebox.vt.p0" />
+        <activity
+            android:name="app.pwhs.dunebox.stub.StubActivity$P0$S3"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+            android:exported="false"
+            android:process=":p0"
+            android:taskAffinity="app.pwhs.dunebox.vt.p0" />
+        <activity
+            android:name="app.pwhs.dunebox.stub.StubActivity$P0$S4"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+            android:exported="false"
+            android:process=":p0"
+            android:taskAffinity="app.pwhs.dunebox.vt.p0" />
+
+        <!-- SingleTask launch mode (5 stubs) -->
+        <activity
+            android:name="app.pwhs.dunebox.stub.StubActivity$P0$T0"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:process=":p0"
+            android:taskAffinity="app.pwhs.dunebox.vt.p0.t0" />
+        <activity
+            android:name="app.pwhs.dunebox.stub.StubActivity$P0$T1"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:process=":p0"
+            android:taskAffinity="app.pwhs.dunebox.vt.p0.t1" />
+        <activity
+            android:name="app.pwhs.dunebox.stub.StubActivity$P0$T2"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:process=":p0"
+            android:taskAffinity="app.pwhs.dunebox.vt.p0.t2" />
+
+        <!-- SingleTop launch mode (2 stubs) -->
+        <activity
+            android:name="app.pwhs.dunebox.stub.StubActivity$P0$Top0"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:process=":p0"
+            android:taskAffinity="app.pwhs.dunebox.vt.p0" />
+        <activity
+            android:name="app.pwhs.dunebox.stub.StubActivity$P0$Top1"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:process=":p0"
+            android:taskAffinity="app.pwhs.dunebox.vt.p0" />
+
+        <!-- ==================== STUB ACTIVITIES: Process :p1 ==================== -->
+        <activity
+            android:name="app.pwhs.dunebox.stub.StubActivity$P1$S0"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+            android:exported="false"
+            android:process=":p1"
+            android:taskAffinity="app.pwhs.dunebox.vt.p1" />
+        <activity
+            android:name="app.pwhs.dunebox.stub.StubActivity$P1$S1"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+            android:exported="false"
+            android:process=":p1"
+            android:taskAffinity="app.pwhs.dunebox.vt.p1" />
+        <activity
+            android:name="app.pwhs.dunebox.stub.StubActivity$P1$S2"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+            android:exported="false"
+            android:process=":p1"
+            android:taskAffinity="app.pwhs.dunebox.vt.p1" />
+
+        <!-- ==================== STUB SERVICES ==================== -->
+        <service
+            android:name="app.pwhs.dunebox.stub.StubService$P0$S0"
+            android:exported="false"
+            android:process=":p0" />
+        <service
+            android:name="app.pwhs.dunebox.stub.StubService$P0$S1"
+            android:exported="false"
+            android:process=":p0" />
+        <service
+            android:name="app.pwhs.dunebox.stub.StubService$P0$S2"
+            android:exported="false"
+            android:process=":p0" />
+        <service
+            android:name="app.pwhs.dunebox.stub.StubService$P1$S0"
+            android:exported="false"
+            android:process=":p1" />
+        <service
+            android:name="app.pwhs.dunebox.stub.StubService$P1$S1"
+            android:exported="false"
+            android:process=":p1" />
+
+        <!-- ==================== STUB CONTENT PROVIDERS ==================== -->
+        <provider
+            android:name="app.pwhs.dunebox.stub.StubContentProvider$P0$S0"
+            android:authorities="app.pwhs.dunebox.vp.p0.s0"
+            android:exported="false"
+            android:process=":p0" />
+        <provider
+            android:name="app.pwhs.dunebox.stub.StubContentProvider$P0$S1"
+            android:authorities="app.pwhs.dunebox.vp.p0.s1"
+            android:exported="false"
+            android:process=":p0" />
+        <provider
+            android:name="app.pwhs.dunebox.stub.StubContentProvider$P1$S0"
+            android:authorities="app.pwhs.dunebox.vp.p1.s0"
+            android:exported="false"
+            android:process=":p1" />
+    </application>
+
+</manifest>

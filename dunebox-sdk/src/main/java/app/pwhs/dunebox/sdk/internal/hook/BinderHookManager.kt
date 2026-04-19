@@ -1,6 +1,7 @@
 package app.pwhs.dunebox.sdk.internal.hook
 
 import android.content.Context
+import app.pwhs.dunebox.sdk.internal.engine.StubActivityManager
 import org.lsposed.hiddenapibypass.HiddenApiBypass
 import timber.log.Timber
 
@@ -12,7 +13,7 @@ import timber.log.Timber
  * 1. Hidden API bypass (must be first)
  * 2. AMS hook (Activity/Service interception)
  * 3. PMS hook (Package info spoofing)
- * 4. Instrumentation hook (Activity lifecycle, future)
+ * 4. Instrumentation hook (Activity lifecycle — swaps stubs with real Activities)
  */
 internal object BinderHookManager {
 
@@ -31,6 +32,9 @@ internal object BinderHookManager {
         }
 
         Timber.i("Initializing BinderHookManager...")
+
+        // Step 0: Initialize StubActivityManager
+        StubActivityManager.init(context.packageName)
 
         // Step 1: Bypass hidden API restrictions (Android 9+)
         try {
@@ -57,11 +61,19 @@ internal object BinderHookManager {
         val pmsResult = HookPMS.hook()
         Timber.i("PMS hook: ${if (pmsResult) "SUCCESS" else "FAILED"}")
 
-        // Step 4: TODO - Hook Instrumentation (Phase 3)
-        // HookInstrumentation.hook(context)
+        // Step 4: Hook Instrumentation (VirtualContext injection in callActivityOnCreate)
+        val instrResult = HookInstrumentation.hook(context)
+        Timber.i("Instrumentation hook: ${if (instrResult) "SUCCESS" else "FAILED"}")
+
+        // Step 5: Hook ActivityThread.mH.mCallback (the CRITICAL piece!)
+        // This intercepts EXECUTE_TRANSACTION / LAUNCH_ACTIVITY messages
+        // and swaps StubActivity → real Activity info BEFORE the framework
+        // creates the Activity instance. This is how BlackBox/VirtualApp do it.
+        val hCallbackResult = HCallbackHook.hook()
+        Timber.i("HCallback hook: ${if (hCallbackResult) "SUCCESS" else "FAILED"}")
 
         isInitialized = true
-        Timber.i("BinderHookManager initialized (AMS=$amsResult, PMS=$pmsResult)")
+        Timber.i("BinderHookManager initialized (AMS=$amsResult, PMS=$pmsResult, Instr=$instrResult, HCallback=$hCallbackResult)")
     }
 
     /**

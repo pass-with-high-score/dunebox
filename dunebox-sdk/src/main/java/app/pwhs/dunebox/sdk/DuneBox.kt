@@ -1,12 +1,16 @@
 package app.pwhs.dunebox.sdk
 
 import android.content.Context
+import android.content.Intent
 import app.pwhs.dunebox.sdk.callback.DuneBoxCallback
 import app.pwhs.dunebox.sdk.config.DuneBoxConfig
 import app.pwhs.dunebox.sdk.config.LogLevel
 import app.pwhs.dunebox.sdk.event.DuneBoxEvent
+import app.pwhs.dunebox.sdk.internal.engine.StubActivityManager
+import app.pwhs.dunebox.sdk.internal.engine.VirtualAppRegistry
 import app.pwhs.dunebox.sdk.internal.hook.BinderHookManager
 import app.pwhs.dunebox.sdk.internal.loader.ApkParser
+import app.pwhs.dunebox.sdk.internal.loader.DexLoader
 import app.pwhs.dunebox.sdk.internal.rule.RuleEngine
 import app.pwhs.dunebox.sdk.internal.vfs.VirtualFileSystem
 import app.pwhs.dunebox.sdk.model.VirtualAppInfo
@@ -42,6 +46,7 @@ object DuneBox {
     private lateinit var appContext: Context
     private lateinit var vfs: VirtualFileSystem
     private lateinit var apkParser: ApkParser
+    private lateinit var dexLoader: DexLoader
 
     private val ruleEngine = RuleEngine()
     private val callbacks = mutableListOf<DuneBoxCallback>()
@@ -91,7 +96,11 @@ object DuneBox {
             apkParser = ApkParser(appContext)
             Timber.d("ApkParser initialized")
 
-            // 3. Binder Hooks
+            // 3. DexLoader
+            dexLoader = DexLoader(appContext)
+            Timber.d("DexLoader initialized")
+
+            // 4. Binder Hooks (includes Instrumentation hook)
             BinderHookManager.init(appContext, config.enableBinderHook)
             Timber.d("BinderHookManager initialized")
 
@@ -163,8 +172,16 @@ object DuneBox {
                 icon = parsedInfo.icon,
             )
 
-            // 5. Save to registry
-            // TODO: Persist VirtualAppInfo to local database/SharedPreferences
+            // 5. Register in VirtualAppRegistry
+            VirtualAppRegistry.register(
+                VirtualAppRegistry.AppEntry(
+                    packageName = parsedInfo.packageName,
+                    userId = userId,
+                    apkPath = destApk.absolutePath,
+                    dataDir = vfs.getDataDir(packageName, userId).absolutePath,
+                    parsedInfo = parsedInfo,
+                )
+            )
 
             // 6. Emit event
             _events.tryEmit(DuneBoxEvent.AppInstalled(packageName, userId))
@@ -298,12 +315,49 @@ object DuneBox {
             vfs.startRedirect()
         }
 
-        // 4. TODO Phase 5: Dynamic APK loading
-        // - Create DexClassLoader for the APK
-        // - Create virtual AssetManager + Resources
-        // - Create VirtualContext
-        // - Load and start the Application class
-        // - Start the main Activity via StubActivity
+        // 4. Get the app entry from registry
+        val appEntry = VirtualAppRegistry.getApp(packageName)
+        if (appEntry == null) {
+            Timber.e("App not registered: $packageName. Install it first.")
+            return
+        }
+
+        // 5. Create DexClassLoader if not yet loaded
+        if (appEntry.classLoader == null) {
+            val loadResult = dexLoader.loadApk(
+                appEntry.apkPath,
+                appEntry.dataDir,
+            )
+            if (loadResult == null) {
+                Timber.e("Failed to load APK for: $packageName")
+                return
+            }
+            appEntry.classLoader = loadResult.classLoader
+            Timber.i("APK loaded into memory: $packageName")
+        }
+
+        // 6. Set as active package
+        VirtualAppRegistry.setActivePackage(packageName)
+
+        // 7. Find the main/launcher Activity
+        val mainActivity = appEntry.parsedInfo.mainActivity
+        if (mainActivity == null) {
+            Timber.e("No main activity found for: $packageName")
+            return
+        }
+
+        // 8. Create launch intent via StubActivityManager
+        val launchIntent = StubActivityManager.createLaunchIntent(packageName, mainActivity)
+
+        // 9. Start the StubActivity (framework sees a valid manifest component)
+        //    HookInstrumentation will intercept and swap with real Activity
+        try {
+            appContext.startActivity(launchIntent)
+            Timber.i("Started StubActivity for: $mainActivity")
+        } catch (e: Exception) {
+            Timber.e(e, "Failed to start activity for: $packageName")
+            return
+        }
 
         _events.tryEmit(DuneBoxEvent.AppLaunched(packageName, userId, android.os.Process.myPid()))
         callbacks.forEach { it.onAppStarted(packageName, userId, android.os.Process.myPid()) }

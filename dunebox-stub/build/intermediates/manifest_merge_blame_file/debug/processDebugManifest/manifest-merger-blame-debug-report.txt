@@ -11,259 +11,217 @@
 11        framework into launching virtual app components. The framework requires all
 12        components to be declared in the manifest — so we pre-declare a pool of stubs.
 13
-14        Process :p0 = first virtual app, :p1 = second, :p2 = third
-15    -->
-16    <application>
-16-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:14:5-106:19
-17
-18        <!-- ==================== STUB ACTIVITIES: Process :p0 ==================== -->
-19        <!-- Standard launch mode (10 stubs) -->
+14        MVP: All stubs run in the MAIN process for simplicity.
+15        Future: Multi-process support via :p0, :p1, :p2
+16    -->
+17    <application>
+17-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:15:5-90:19
+18
+19        <!-- ==================== STUB ACTIVITIES: Standard ==================== -->
 20        <activity
-20-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:18:9-21:197
+20-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:18:9-20:197
 21            android:name="app.pwhs.dunebox.stub.StubActivity$P0$S0"
 21-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:18:19-53
 22            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
-22-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:21:13-194
+22-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:20:13-194
 23            android:exported="false"
 23-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:18:54-78
-24            android:process=":p0"
-24-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:20:13-34
-25            android:taskAffinity="app.pwhs.dunebox.vt.p0" />
-25-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:19:13-58
-26        <activity
-26-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:22:9-25:197
-27            android:name="app.pwhs.dunebox.stub.StubActivity$P0$S1"
-27-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:22:19-53
-28            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
-28-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:25:13-194
-29            android:exported="false"
-29-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:22:54-78
-30            android:process=":p0"
-30-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:24:13-34
-31            android:taskAffinity="app.pwhs.dunebox.vt.p0" />
-31-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:23:13-58
-32        <activity
-32-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:26:9-29:197
-33            android:name="app.pwhs.dunebox.stub.StubActivity$P0$S2"
-33-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:26:19-53
-34            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
-34-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:29:13-194
-35            android:exported="false"
-35-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:26:54-78
-36            android:process=":p0"
-36-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:28:13-34
-37            android:taskAffinity="app.pwhs.dunebox.vt.p0" />
-37-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:27:13-58
-38        <activity
-38-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:30:9-33:197
-39            android:name="app.pwhs.dunebox.stub.StubActivity$P0$S3"
-39-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:30:19-53
-40            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
-40-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:33:13-194
-41            android:exported="false"
-41-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:30:54-78
-42            android:process=":p0"
-42-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:32:13-34
-43            android:taskAffinity="app.pwhs.dunebox.vt.p0" />
-43-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:31:13-58
-44        <activity
-44-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:34:9-37:197
-45            android:name="app.pwhs.dunebox.stub.StubActivity$P0$S4"
-45-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:34:19-53
-46            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
-46-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:37:13-194
-47            android:exported="false"
-47-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:34:54-78
-48            android:process=":p0"
-48-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:36:13-34
-49            android:taskAffinity="app.pwhs.dunebox.vt.p0" />
-49-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:35:13-58
-50
-51        <!-- SingleTask launch mode (5 stubs) -->
-52        <activity
-52-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:40:9-44:197
-53            android:name="app.pwhs.dunebox.stub.StubActivity$P0$T0"
-53-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:40:19-53
-54            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
-54-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:44:13-194
-55            android:exported="false"
-55-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:40:54-78
-56            android:launchMode="singleTask"
-56-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:41:13-44
-57            android:process=":p0"
-57-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:43:13-34
-58            android:taskAffinity="app.pwhs.dunebox.vt.p0.t0" />
-58-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:42:13-61
+24            android:taskAffinity="app.pwhs.dunebox.vt.s0" />
+24-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:19:13-58
+25        <activity
+25-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:21:9-23:197
+26            android:name="app.pwhs.dunebox.stub.StubActivity$P0$S1"
+26-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:21:19-53
+27            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+27-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:23:13-194
+28            android:exported="false"
+28-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:21:54-78
+29            android:taskAffinity="app.pwhs.dunebox.vt.s1" />
+29-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:22:13-58
+30        <activity
+30-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:24:9-26:197
+31            android:name="app.pwhs.dunebox.stub.StubActivity$P0$S2"
+31-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:24:19-53
+32            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+32-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:26:13-194
+33            android:exported="false"
+33-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:24:54-78
+34            android:taskAffinity="app.pwhs.dunebox.vt.s2" />
+34-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:25:13-58
+35        <activity
+35-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:27:9-29:197
+36            android:name="app.pwhs.dunebox.stub.StubActivity$P0$S3"
+36-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:27:19-53
+37            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+37-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:29:13-194
+38            android:exported="false"
+38-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:27:54-78
+39            android:taskAffinity="app.pwhs.dunebox.vt.s3" />
+39-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:28:13-58
+40        <activity
+40-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:30:9-32:197
+41            android:name="app.pwhs.dunebox.stub.StubActivity$P0$S4"
+41-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:30:19-53
+42            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+42-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:32:13-194
+43            android:exported="false"
+43-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:30:54-78
+44            android:taskAffinity="app.pwhs.dunebox.vt.s4" />
+44-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:31:13-58
+45
+46        <!-- SingleTask launch mode -->
+47        <activity
+47-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:35:9-38:197
+48            android:name="app.pwhs.dunebox.stub.StubActivity$P0$T0"
+48-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:35:19-53
+49            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+49-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:38:13-194
+50            android:exported="false"
+50-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:35:54-78
+51            android:launchMode="singleTask"
+51-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:36:13-44
+52            android:taskAffinity="app.pwhs.dunebox.vt.t0" />
+52-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:37:13-58
+53        <activity
+53-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:39:9-42:197
+54            android:name="app.pwhs.dunebox.stub.StubActivity$P0$T1"
+54-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:39:19-53
+55            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+55-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:42:13-194
+56            android:exported="false"
+56-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:39:54-78
+57            android:launchMode="singleTask"
+57-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:40:13-44
+58            android:taskAffinity="app.pwhs.dunebox.vt.t1" />
+58-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:41:13-58
 59        <activity
-59-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:45:9-49:197
-60            android:name="app.pwhs.dunebox.stub.StubActivity$P0$T1"
-60-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:45:19-53
+59-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:43:9-46:197
+60            android:name="app.pwhs.dunebox.stub.StubActivity$P0$T2"
+60-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:43:19-53
 61            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
-61-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:49:13-194
+61-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:46:13-194
 62            android:exported="false"
-62-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:45:54-78
+62-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:43:54-78
 63            android:launchMode="singleTask"
-63-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:46:13-44
-64            android:process=":p0"
-64-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:48:13-34
-65            android:taskAffinity="app.pwhs.dunebox.vt.p0.t1" />
-65-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:47:13-61
-66        <activity
-66-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:50:9-54:197
-67            android:name="app.pwhs.dunebox.stub.StubActivity$P0$T2"
-67-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:50:19-53
-68            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
-68-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:54:13-194
-69            android:exported="false"
-69-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:50:54-78
-70            android:launchMode="singleTask"
-70-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:51:13-44
-71            android:process=":p0"
-71-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:53:13-34
-72            android:taskAffinity="app.pwhs.dunebox.vt.p0.t2" />
-72-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:52:13-61
-73
-74        <!-- SingleTop launch mode (2 stubs) -->
-75        <activity
-75-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:57:9-61:197
-76            android:name="app.pwhs.dunebox.stub.StubActivity$P0$Top0"
-76-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:57:19-55
-77            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
-77-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:61:13-194
-78            android:exported="false"
-78-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:57:56-80
-79            android:launchMode="singleTop"
-79-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:58:13-43
-80            android:process=":p0"
-80-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:60:13-34
-81            android:taskAffinity="app.pwhs.dunebox.vt.p0" />
-81-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:59:13-58
-82        <activity
-82-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:62:9-66:197
-83            android:name="app.pwhs.dunebox.stub.StubActivity$P0$Top1"
-83-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:62:19-55
-84            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
-84-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:66:13-194
-85            android:exported="false"
-85-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:62:56-80
-86            android:launchMode="singleTop"
-86-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:63:13-43
-87            android:process=":p0"
-87-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:65:13-34
-88            android:taskAffinity="app.pwhs.dunebox.vt.p0" />
-88-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:64:13-58
-89
-90        <!-- ==================== STUB ACTIVITIES: Process :p1 ==================== -->
+63-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:44:13-44
+64            android:taskAffinity="app.pwhs.dunebox.vt.t2" />
+64-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:45:13-58
+65
+66        <!-- SingleTop launch mode -->
+67        <activity
+67-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:49:9-52:197
+68            android:name="app.pwhs.dunebox.stub.StubActivity$P0$Top0"
+68-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:49:19-55
+69            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+69-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:52:13-194
+70            android:exported="false"
+70-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:49:56-80
+71            android:launchMode="singleTop"
+71-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:50:13-43
+72            android:taskAffinity="app.pwhs.dunebox.vt.top0" />
+72-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:51:13-60
+73        <activity
+73-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:53:9-56:197
+74            android:name="app.pwhs.dunebox.stub.StubActivity$P0$Top1"
+74-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:53:19-55
+75            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+75-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:56:13-194
+76            android:exported="false"
+76-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:53:56-80
+77            android:launchMode="singleTop"
+77-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:54:13-43
+78            android:taskAffinity="app.pwhs.dunebox.vt.top1" />
+78-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:55:13-60
+79
+80        <!-- Process :p1 stubs (also main process for MVP) -->
+81        <activity
+81-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:59:9-61:197
+82            android:name="app.pwhs.dunebox.stub.StubActivity$P1$S0"
+82-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:59:19-53
+83            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+83-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:61:13-194
+84            android:exported="false"
+84-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:59:54-78
+85            android:taskAffinity="app.pwhs.dunebox.vt.p1s0" />
+85-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:60:13-60
+86        <activity
+86-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:62:9-64:197
+87            android:name="app.pwhs.dunebox.stub.StubActivity$P1$S1"
+87-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:62:19-53
+88            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+88-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:64:13-194
+89            android:exported="false"
+89-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:62:54-78
+90            android:taskAffinity="app.pwhs.dunebox.vt.p1s1" />
+90-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:63:13-60
 91        <activity
-91-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:69:9-72:197
-92            android:name="app.pwhs.dunebox.stub.StubActivity$P1$S0"
-92-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:69:19-53
+91-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:65:9-67:197
+92            android:name="app.pwhs.dunebox.stub.StubActivity$P1$S2"
+92-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:65:19-53
 93            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
-93-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:72:13-194
+93-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:67:13-194
 94            android:exported="false"
-94-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:69:54-78
-95            android:process=":p1"
-95-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:71:13-34
-96            android:taskAffinity="app.pwhs.dunebox.vt.p1" />
-96-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:70:13-58
-97        <activity
-97-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:73:9-76:197
-98            android:name="app.pwhs.dunebox.stub.StubActivity$P1$S1"
-98-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:73:19-53
-99            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
-99-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:76:13-194
-100            android:exported="false"
-100-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:73:54-78
-101            android:process=":p1"
-101-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:75:13-34
-102            android:taskAffinity="app.pwhs.dunebox.vt.p1" />
-102-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:74:13-58
-103        <activity
-103-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:77:9-80:197
-104            android:name="app.pwhs.dunebox.stub.StubActivity$P1$S2"
-104-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:77:19-53
-105            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
-105-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:80:13-194
-106            android:exported="false"
-106-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:77:54-78
-107            android:process=":p1"
-107-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:79:13-34
-108            android:taskAffinity="app.pwhs.dunebox.vt.p1" />
-108-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:78:13-58
-109
-110        <!-- ==================== STUB SERVICES ==================== -->
-111        <service
-111-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:83:9-101
-112            android:name="app.pwhs.dunebox.stub.StubService$P0$S0"
-112-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:83:18-51
-113            android:exported="false"
-113-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:83:52-76
-114            android:process=":p0" />
-114-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:83:77-98
-115        <service
-115-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:84:9-101
-116            android:name="app.pwhs.dunebox.stub.StubService$P0$S1"
-116-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:84:18-51
-117            android:exported="false"
-117-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:84:52-76
-118            android:process=":p0" />
-118-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:84:77-98
-119        <service
-119-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:85:9-101
-120            android:name="app.pwhs.dunebox.stub.StubService$P0$S2"
-120-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:85:18-51
-121            android:exported="false"
-121-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:85:52-76
-122            android:process=":p0" />
-122-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:85:77-98
-123        <service
-123-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:86:9-101
-124            android:name="app.pwhs.dunebox.stub.StubService$P1$S0"
-124-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:86:18-51
-125            android:exported="false"
-125-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:86:52-76
-126            android:process=":p1" />
-126-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:86:77-98
-127        <service
-127-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:87:9-101
-128            android:name="app.pwhs.dunebox.stub.StubService$P1$S1"
-128-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:87:18-51
-129            android:exported="false"
-129-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:87:52-76
-130            android:process=":p1" />
-130-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:87:77-98
-131
-132        <!-- ==================== STUB CONTENT PROVIDERS ==================== -->
-133        <provider
-133-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:90:9-94:37
-134            android:name="app.pwhs.dunebox.stub.StubContentProvider$P0$S0"
-134-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:91:13-54
-135            android:authorities="app.pwhs.dunebox.vp.p0.s0"
-135-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:92:13-60
-136            android:exported="false"
-136-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:93:13-37
-137            android:process=":p0" />
-137-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:94:13-34
-138        <provider
-138-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:95:9-99:37
-139            android:name="app.pwhs.dunebox.stub.StubContentProvider$P0$S1"
-139-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:96:13-54
-140            android:authorities="app.pwhs.dunebox.vp.p0.s1"
-140-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:97:13-60
-141            android:exported="false"
-141-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:98:13-37
-142            android:process=":p0" />
-142-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:99:13-34
-143        <provider
-143-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:100:9-104:37
-144            android:name="app.pwhs.dunebox.stub.StubContentProvider$P1$S0"
-144-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:101:13-54
-145            android:authorities="app.pwhs.dunebox.vp.p1.s0"
-145-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:102:13-60
-146            android:exported="false"
-146-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:103:13-37
-147            android:process=":p1" />
-147-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:104:13-34
-148    </application>
-149
-150</manifest>
+94-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:65:54-78
+95            android:taskAffinity="app.pwhs.dunebox.vt.p1s2" />
+95-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:66:13-60
+96
+97        <!-- ==================== STUB SERVICES ==================== -->
+98        <service
+98-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:70:9-79
+99            android:name="app.pwhs.dunebox.stub.StubService$P0$S0"
+99-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:70:18-51
+100            android:exported="false" />
+100-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:70:52-76
+101        <service
+101-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:71:9-79
+102            android:name="app.pwhs.dunebox.stub.StubService$P0$S1"
+102-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:71:18-51
+103            android:exported="false" />
+103-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:71:52-76
+104        <service
+104-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:72:9-79
+105            android:name="app.pwhs.dunebox.stub.StubService$P0$S2"
+105-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:72:18-51
+106            android:exported="false" />
+106-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:72:52-76
+107        <service
+107-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:73:9-79
+108            android:name="app.pwhs.dunebox.stub.StubService$P1$S0"
+108-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:73:18-51
+109            android:exported="false" />
+109-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:73:52-76
+110        <service
+110-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:74:9-79
+111            android:name="app.pwhs.dunebox.stub.StubService$P1$S1"
+111-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:74:18-51
+112            android:exported="false" />
+112-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:74:52-76
+113
+114        <!-- ==================== STUB CONTENT PROVIDERS ==================== -->
+115        <provider
+115-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:77:9-80:40
+116            android:name="app.pwhs.dunebox.stub.StubContentProvider$P0$S0"
+116-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:78:13-54
+117            android:authorities="app.pwhs.dunebox.vp.p0.s0"
+117-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:79:13-60
+118            android:exported="false" />
+118-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:80:13-37
+119        <provider
+119-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:81:9-84:40
+120            android:name="app.pwhs.dunebox.stub.StubContentProvider$P0$S1"
+120-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:82:13-54
+121            android:authorities="app.pwhs.dunebox.vp.p0.s1"
+121-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:83:13-60
+122            android:exported="false" />
+122-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:84:13-37
+123        <provider
+123-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:85:9-88:40
+124            android:name="app.pwhs.dunebox.stub.StubContentProvider$P1$S0"
+124-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:86:13-54
+125            android:authorities="app.pwhs.dunebox.vp.p1.s0"
+125-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:87:13-60
+126            android:exported="false" />
+126-->/Users/nqmgaming/Workspaces/poke-auto/pokemon-auto-register/DuneBox/dunebox-stub/src/main/AndroidManifest.xml:88:13-37
+127    </application>
+128
+129</manifest>

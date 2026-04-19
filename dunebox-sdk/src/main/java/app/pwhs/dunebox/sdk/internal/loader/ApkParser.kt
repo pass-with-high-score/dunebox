@@ -76,11 +76,12 @@ internal class ApkParser(private val context: Context) {
             }
 
             // Find main launcher activity
-            val mainActivity = packageInfo.activities?.firstOrNull { activity ->
-                // Simple heuristic: look for common main activity names
-                activity.name.endsWith("MainActivity") ||
-                        activity.name.endsWith(".Main") ||
-                        activity.exported
+            val mainActivity = run {
+                // Try to find via LAUNCHER intent
+                val launchIntent = pm.getLaunchIntentForPackage(packageInfo.packageName)
+                launchIntent?.component?.className
+            } ?: packageInfo.activities?.firstOrNull { activity ->
+                activity.exported
             }?.name
 
             ParsedApkInfo(
